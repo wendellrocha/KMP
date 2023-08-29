@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
-    //id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
     id("com.android.library")
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 val ktorVersion = "2.3.2"
@@ -10,7 +10,7 @@ val ktorVersion = "2.3.2"
 kotlin {
     targetHierarchy.default()
 
-    android {
+    androidTarget {
         compilations.all {
             kotlinOptions {
                 jvmTarget = "1.8"
@@ -44,7 +44,6 @@ kotlin {
             }
         }
         val iosMain by getting {
-            // ...
             dependencies {
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
